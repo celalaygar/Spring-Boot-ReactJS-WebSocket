@@ -17,7 +17,7 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @MessageMapping(WebSocketUtil.END_POINT)
-    @SendTo("/topic/auction")
+    @SendTo("/topic/add-user")
     public User send(@Payload User user) {
         user.setSystemNumber(UUID.randomUUID().toString());
         if(StringUtils.isEmpty(user.getSystemNumber())){
