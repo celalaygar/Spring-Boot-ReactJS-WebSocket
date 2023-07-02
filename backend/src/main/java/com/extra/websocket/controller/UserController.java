@@ -1,7 +1,7 @@
 package com.extra.websocket.controller;
 
 import com.extra.websocket.model.User;
-import com.extra.websocket.util.WebSocketUtil;
+import com.extra.websocket.util.WebSocketUserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @MessageMapping(WebSocketUtil.END_POINT)
+    @MessageMapping(WebSocketUserUtil.END_POINT)
     @SendTo("/topic/add-user")
     public User send(@Payload User user) {
         user.setSystemNumber(UUID.randomUUID().toString());
