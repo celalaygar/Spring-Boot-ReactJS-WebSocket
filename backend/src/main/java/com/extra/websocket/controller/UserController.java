@@ -20,6 +20,7 @@ public class UserController {
     @SendTo("/topic/add-user")
     public User send(@Payload User user) {
         user.setSystemNumber(UUID.randomUUID().toString());
+        user.setActiveStatus(true);
         if(StringUtils.isEmpty(user.getSystemNumber())){
             logger.error("user system number is not added");
         }else{
